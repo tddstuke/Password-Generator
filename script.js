@@ -115,6 +115,8 @@ var getLowerCharacters = function () {
   if (getLowerCase) {
     console.log(lowerCase);
     return lowerCase;
+  } else {
+    return "";
   }
 };
 var getUpperCharacters = function () {
@@ -122,6 +124,8 @@ var getUpperCharacters = function () {
   if (getUpperCase) {
     console.log(upperCase);
     return upperCase;
+  } else {
+    return "";
   }
 };
 var getNumbers = function () {
@@ -129,20 +133,35 @@ var getNumbers = function () {
   if (getNumbers) {
     console.log(numbers);
     return numbers;
+  } else {
+    return "";
   }
 };
 var getSpecials = function () {
   var getSpecials = window.confirm("Would you like to use Special Characters?");
   if (getSpecials) {
-    console.log(specialCharacters);
+    // console.log(getSpecials());
     return specialCharacters;
+  } else {
+    return "";
   }
 };
 
+// generate random password using returned values
+
 function generatePassword() {
-  getpasswordLength();
-  getLowerCharacters();
-  getUpperCharacters();
-  getNumbers();
-  getSpecials();
+  var charactersLength = getpasswordLength();
+  var characters =
+    getLowerCharacters() + getUpperCharacters() + getNumbers() + getSpecials();
+  console.log(charactersLength);
+  characters = characters.replace(/,/g, "");
+  console.log(characters);
+  var password = "";
+  for (i = 0; i < charactersLength; i++) {
+    password += characters.charAt(
+      Math.floor(Math.random() * characters.length + 1)
+    );
+    console.log(password);
+  }
+  return password;
 }
