@@ -153,6 +153,10 @@ function generatePassword() {
   var charactersLength = getpasswordLength();
   var characters =
     getLowerCharacters() + getUpperCharacters() + getNumbers() + getSpecials();
+  if (!characters) {
+    alert("Please choose at least one parameter");
+    generatePassword();
+  }
   console.log(charactersLength);
   characters = characters.replace(/,/g, "");
   console.log(characters);
